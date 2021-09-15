@@ -6,7 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import javax.validation.constraints.*;
 import java.util.Objects;
 
-public class ContactCreateCommand {
+public class ContactCreateUpdateCommand {
 
     @Schema(example = "John")
     @NotBlank
@@ -35,7 +35,7 @@ public class ContactCreateCommand {
     @NotNull
     private String comment;
 
-    public ContactCreateCommand(String firstName, String lastName, String email, String phoneNumber, Long companyId, String comment) {
+    public ContactCreateUpdateCommand(String firstName, String lastName, String email, String phoneNumber, Long companyId, String comment) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -48,7 +48,7 @@ public class ContactCreateCommand {
         return firstName;
     }
 
-    public ContactCreateCommand setFirstName(String firstName) {
+    public ContactCreateUpdateCommand setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
@@ -57,7 +57,7 @@ public class ContactCreateCommand {
         return lastName;
     }
 
-    public ContactCreateCommand setLastName(String lastName) {
+    public ContactCreateUpdateCommand setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
@@ -66,7 +66,7 @@ public class ContactCreateCommand {
         return email;
     }
 
-    public ContactCreateCommand setEmail(String email) {
+    public ContactCreateUpdateCommand setEmail(String email) {
         this.email = email;
         return this;
     }
@@ -75,7 +75,7 @@ public class ContactCreateCommand {
         return phoneNumber;
     }
 
-    public ContactCreateCommand setPhoneNumber(String phoneNumber) {
+    public ContactCreateUpdateCommand setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }
@@ -84,7 +84,7 @@ public class ContactCreateCommand {
         return companyId;
     }
 
-    public ContactCreateCommand setCompanyId(Long companyId) {
+    public ContactCreateUpdateCommand setCompanyId(Long companyId) {
         this.companyId = companyId;
         return this;
     }
@@ -93,7 +93,7 @@ public class ContactCreateCommand {
         return comment;
     }
 
-    public ContactCreateCommand setComment(String comment) {
+    public ContactCreateUpdateCommand setComment(String comment) {
         this.comment = comment;
         return this;
     }
@@ -102,7 +102,7 @@ public class ContactCreateCommand {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ContactCreateCommand that = (ContactCreateCommand) o;
+        ContactCreateUpdateCommand that = (ContactCreateUpdateCommand) o;
         return firstName.equals(that.firstName) && lastName.equals(that.lastName) && email.equals(that.email) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(companyId, that.companyId) && Objects.equals(comment, that.comment);
     }
 
