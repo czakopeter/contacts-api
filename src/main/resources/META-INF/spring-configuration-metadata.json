@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "contact.page-size",
+      "type": "java.lang.Integer",
+      "description": "Page size of contact listing. Must greater than 0."
+    }
+  ]
+}
