@@ -21,7 +21,7 @@ public class ContactCreateUpdateCommand {
     @Email
     private String email;
 
-    @Schema(example = "+36201234567")
+    @Schema(example = "36201234567")
     @Size(min = 1, message = "size must be greater than or equal to {min}")
     @PhoneNumber
     private String phoneNumber;
@@ -48,54 +48,48 @@ public class ContactCreateUpdateCommand {
         return firstName;
     }
 
-    public ContactCreateUpdateCommand setFirstName(String firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
-        return this;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public ContactCreateUpdateCommand setLastName(String lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
-        return this;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public ContactCreateUpdateCommand setEmail(String email) {
+    public void setEmail(String email) {
         this.email = email;
-        return this;
     }
 
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public ContactCreateUpdateCommand setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-        return this;
     }
 
     public Long getCompanyId() {
         return companyId;
     }
 
-    public ContactCreateUpdateCommand setCompanyId(Long companyId) {
+    public void setCompanyId(Long companyId) {
         this.companyId = companyId;
-        return this;
     }
 
     public String getComment() {
         return comment;
     }
 
-    public ContactCreateUpdateCommand setComment(String comment) {
+    public void setComment(String comment) {
         this.comment = comment;
-        return this;
     }
 
     @Override
