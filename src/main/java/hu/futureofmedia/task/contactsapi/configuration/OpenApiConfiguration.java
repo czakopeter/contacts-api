@@ -12,8 +12,8 @@ public class OpenApiConfiguration {
     public OpenAPI customOpenApi() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Kapcsolattartó API")
-                        .description("Rest API, ahol kapcsolattartók kelezésére van lehetőség")
+                        .title("Contact API")
+                        .description("Operations with contact")
                         .version("v1"));
     }
 }

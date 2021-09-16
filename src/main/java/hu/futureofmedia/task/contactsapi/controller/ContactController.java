@@ -43,13 +43,13 @@ public class ContactController {
 
 
     @Operation(
-            summary = "Kapcsolattartó létrehozása")
+            summary = "Create contact")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Kapcsolattartó sikeresen létrehozva",
+            @ApiResponse(responseCode = "201", description = "Contact created",
                     content = @Content(schema = @Schema(implementation = ContactInfo.class))),
-            @ApiResponse(responseCode = "400", description = "Bemeneti adatok nem megfelelőek",
+            @ApiResponse(responseCode = "400", description = "Input data not appropriate",
                     content = @Content(array = @ArraySchema(schema = @Schema(implementation = ErrorMessage.class)))),
-            @ApiResponse(responseCode = "404", description = "Nem található cég a megadott ID-vel",
+            @ApiResponse(responseCode = "404", description = "Given company id not found",
                     content = @Content(array = @ArraySchema(schema = @Schema(implementation = ErrorMessage.class)))) })
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
@@ -60,13 +60,13 @@ public class ContactController {
     }
 
     @Operation(
-            summary = "Kapcsolattartókat tartalmaző oldal lekérdezése",
-            parameters = @Parameter(in = ParameterIn.QUERY, name = "page", description = "Lekérni kívánt oldalszám (0..N)",
+            summary = "List contacts from given page",
+            parameters = @Parameter(in = ParameterIn.QUERY, name = "page", description = "Searched page (0..N)",
                     content = @Content(schema = @Schema(defaultValue = "0", example = "0"))))
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Kapcsolattartók sikeresen lekérdezve",
+            @ApiResponse(responseCode = "200", description = "Contacts listed",
                     content = @Content(array = @ArraySchema(schema = @Schema(implementation = ContactInfo.class)))),
-            @ApiResponse(responseCode = "400", description = "Megadott oldalszám negatív",
+            @ApiResponse(responseCode = "400", description = "Given page is negative",
                     content = @Content(array = @ArraySchema(schema = @Schema(implementation = ErrorMessage.class)))) })
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
@@ -77,12 +77,12 @@ public class ContactController {
     }
 
     @Operation(
-            summary = "Kapcsolattartó részletes adatainak lekérdezése ID alapján",
-            parameters = @Parameter(in = ParameterIn.PATH, name = "id", example = "1", description = "Lekérdezni kívánt kapcsolattartó ID-je"))
+            summary = "Get contact details by ID",
+            parameters = @Parameter(in = ParameterIn.PATH, name = "id", example = "1", description = "ID of contact"))
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Kapcsolattartó sikeresen lekérdezve",
+            @ApiResponse(responseCode = "200", description = "Contact found",
                     content = @Content(schema = @Schema(implementation = ContactInfo.class))),
-            @ApiResponse(responseCode = "404", description = "Nem található kapcsolattartó a megadott ID-vel",
+            @ApiResponse(responseCode = "404", description = "Contact not found with given ID",
                     content = @Content(array = @ArraySchema(schema = @Schema(implementation = ErrorMessage.class)))) })
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
@@ -93,14 +93,14 @@ public class ContactController {
     }
 
     @Operation(
-            summary = "Kapcsolattartó módosítása ID alapján",
-            parameters = @Parameter(in = ParameterIn.PATH, name = "id", example = "1", description = "Módosítani kívánt kapcsolattartó ID-je"))
+            summary = "Update contact by ID",
+            parameters = @Parameter(in = ParameterIn.PATH, name = "id", example = "1", description = "ID of contact"))
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Kapcsolattartó sikeresen módosítva",
+            @ApiResponse(responseCode = "200", description = "Contact updated",
                     content = @Content(schema = @Schema(implementation = ContactInfo.class))),
-            @ApiResponse(responseCode = "400", description = "Bemeneti adatok nem megfelelőek",
+            @ApiResponse(responseCode = "400", description = "Input data not appropriate",
                     content = @Content(array = @ArraySchema(schema = @Schema(implementation = ErrorMessage.class)))),
-            @ApiResponse(responseCode = "404", description = "Nem található kapcsolattartó vagy cég a megadott ID-vel",
+            @ApiResponse(responseCode = "404", description = "Contact or company not found with given ID",
                     content = @Content(array = @ArraySchema(schema = @Schema(implementation = ErrorMessage.class)))) })
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
@@ -112,11 +112,11 @@ public class ContactController {
     }
 
     @Operation(
-            summary = "Kapcsolattartó törlése ID alapján",
-            parameters = @Parameter(in = ParameterIn.PATH, name = "id", example = "1", description = "Törölni kívánt kapcsolattartó ID-je"))
+            summary = "Delete contact by ID",
+            parameters = @Parameter(in = ParameterIn.PATH, name = "id", example = "1", description = "ID of contact"))
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Kapcsolattartó sikeresen törölve", content = @Content()),
-            @ApiResponse(responseCode = "404", description = "Nem található kapcsolattartó a megadott ID-vel", content = @Content())})
+            @ApiResponse(responseCode = "200", description = "Contact deleted", content = @Content()),
+            @ApiResponse(responseCode = "404", description = "Contact not found with given ID", content = @Content())})
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteContactBy(
