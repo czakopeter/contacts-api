@@ -18,34 +18,34 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public List<ExceptionMessage> handleMethodArgumentNotValidException(
+    public List<ErrorMessage> handleMethodArgumentNotValidException(
             MethodArgumentNotValidException e) {
         return e.getFieldErrors().stream()
-                .map(fieldError -> new ExceptionMessage(fieldError.getField(), fieldError.getDefaultMessage()))
+                .map(fieldError -> new ErrorMessage(fieldError.getField(), fieldError.getDefaultMessage()))
                 .collect(Collectors.toList());
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public List<ExceptionMessage> handle(
+    public List<ErrorMessage> handle(
             MethodArgumentTypeMismatchException e) {
-        ExceptionMessage message = new ExceptionMessage(null, e.getMessage());
+        ErrorMessage message = new ErrorMessage(null, e.getMessage());
         return List.of(message);
     }
 
     @ExceptionHandler(IdNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public List<ExceptionMessage> handleIdNotFoundException(
+    public List<ErrorMessage> handleIdNotFoundException(
             IdNotFoundException e) {
-        ExceptionMessage message = new ExceptionMessage(null, String.format("not found class %s entity with id %d", e.getClassType().getSimpleName(), e.getId()));
+        ErrorMessage message = new ErrorMessage(null, String.format("not found class %s entity with id %d", e.getClassType().getSimpleName(), e.getId()));
         return List.of(message);
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public List<ExceptionMessage> handleIllegalArgumentException(
+    public List<ErrorMessage> handleIllegalArgumentException(
             IllegalArgumentException e) {
-        ExceptionMessage message = new ExceptionMessage(null, e.getMessage());
+        ErrorMessage message = new ErrorMessage(null, e.getMessage());
         return List.of(message);
     }
 }
